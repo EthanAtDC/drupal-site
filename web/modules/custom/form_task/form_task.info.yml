@@ -1,0 +1,6 @@
+name: 'form_task'
+type: 'module'
+description: 'This is the form for my form task'
+core: 8.x
+package: 'Custom'
+core_version_requirement: ^8 || ^9

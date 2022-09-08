@@ -1,0 +1,8 @@
+form_task:
+  path: '/form_task'
+  defualts:
+    _form: 'Drupal\form_task\Form\form_task'
+    _title: 'Form Task'
+  requirements:
+    _permission: 'access content'
+
