@@ -1,4 +1,4 @@
-form_task:
+form_task.FormTask:
   path: '/form_task'
   defualts:
     _form: '\Drupal\form_task\Form\FormTask'
