@@ -1,0 +1,36 @@
+function form_task_install() {
+  // Insert some example data into our schema.
+  $entries = [
+    [
+      'task' => 'Do something fun',
+    ],
+    [
+      'task' => 'Do something you hate',
+    ],
+  ];
+
+  $connection = \Drupal::database();
+  foreach ($entries as $entry) {
+    $connection->insert('form_task')->fields($entry)->execute();
+  }
+}
+
+function dbtng_example_schema() {
+  $schema['dbtng_example'] = [
+    'description' => 'Stores example person entries for demonstration purposes.',
+    'fields' => [
+      'task' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique person ID.',
+      ],
+      'primary key' => ['task'],
+      'indexes' => [
+      'task' => ['task'],
+    ],
+    
+
+  ];
+
+  return $schema;
+}

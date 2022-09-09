@@ -4,11 +4,12 @@ namespace Drupal\form_task\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element\Table;
 
 /**
  * Implements a example task form using FORM API.
  */
-class FormTask extends FormBase {
+class HelloFormTask extends FormBase {
 
 
   public function getFormId() {
@@ -30,7 +31,16 @@ class FormTask extends FormBase {
       '#button_type' => 'primary',
     ];
     return $form;
+
   }
+
+  // public function buildTable(array $table) {
+  //   $header = array('Task', 'Task description');
+
+  //   $rows = array();
+  //   $results = db_query("SELECT * FROM ")
+
+  // }
 
   /**
    * Validates the length of the task entered
@@ -48,4 +58,21 @@ class FormTask extends FormBase {
     $this->messenger()->addStatus($this->t('Your task is @task', ['@task' => $form_state->getValue('task_one')]));
   }
 
+  public function hook_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+
+
+  }
+
 }
+
+// class TaskTable extends Table {
+
+//   public function getInfo()
+//   {
+//     $class = static::class;
+
+//     return [
+       
+//     ]
+//   }

@@ -1,0 +1,16 @@
+<?php
+
+function form_tasks() {
+
+    $items = array();
+    $items['/form_task'] = array(
+        'title' => 'Enter a task',
+        'page callback' => 'form_task_page',
+        'access arguments' => array('access content'),
+        'file' => 'form_task.tasks.inc',
+        'weight' => 1,
+    );
+
+    return $items;
+
+}

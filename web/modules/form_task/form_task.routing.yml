@@ -1,7 +1,7 @@
 form_task.FormTask:
   path: '/form_task'
-  defualts:
-    _form: '\Drupal\form_task\Form\FormTask'
+  defaults:
+    _form: '\Drupal\form_task\Form\HelloFormTask'
     _title: 'Form Task'
   requirements:
     _permission: 'access content'
