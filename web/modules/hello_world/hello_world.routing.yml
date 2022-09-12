@@ -21,10 +21,10 @@ hello_world:
   requirements:
     _permission: "access content"
 
-hello_world.HelloWorldForm:
+hello_world.HelloWorldExampleForm:
   path: "/form_task"
   defaults:
-    _form: '\Drupal\hello_world\Form\HelloWorldForm'
+    _form: '\Drupal\hello_world\Form\HelloWorldExampleForm'
     _title: 'Simple form'
   requirements:
     _permission: "access content"

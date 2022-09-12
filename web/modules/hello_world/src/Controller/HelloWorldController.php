@@ -5,14 +5,6 @@ namespace Drupal\hello_world\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 class HelloWorldController extends ControllerBase {
-    
-    public function build() {
-        $build['content'] = [
-            '#type' => 'item',
-            '#markup' => 'Hello World',
-        ];
-        return $build;
-    }
 
     protected $repository;
 
@@ -24,6 +16,14 @@ class HelloWorldController extends ControllerBase {
 
     public function __construct(HelloWorldRepository $repository) {
         $this->repository = $repository;
+    }
+
+    public function build() {
+        $build['content'] = [
+            '#type' => 'item',
+            '#markup' => 'Hello World',
+        ];
+        return $build;
     }
 
     /**
