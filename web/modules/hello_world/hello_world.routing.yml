@@ -1,0 +1,14 @@
+hello_world:
+  path: "/hello-world"
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::build'
+  requirements:
+    _permission: "access content"
+
+hello_world.HelloWorldForm:
+  path: "/form_task"
+  defaults:
+    _form: '\Drupal\hello_world\Form\HelloWorldForm'
+    _title: 'Simple form'
+  requirements:
+    _permission: "access content"
