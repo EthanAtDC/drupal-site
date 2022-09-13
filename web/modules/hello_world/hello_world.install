@@ -23,17 +23,6 @@ function hello_world_schema() {
   $schema['hello_world'] = [
     'description' => 'Stores example person entries for demonstration purposes.',
     'fields' => [
-      'pid' => [
-        'type' => 'serial',
-        'not null' => TRUE,
-        'description' => 'Primary Key: Unique person ID.',
-      ],
-      'uid' => [
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Creator user's {users}.uid",
-      ],
       'task' => [
         'type' => 'varchar',
         'length' => 255,
@@ -42,7 +31,7 @@ function hello_world_schema() {
         'description' => 'Description of task.',
       ],
     ],
-    'primary key' => ['pid'],
+    'primary key' => ['task'],
     'indexes' => [
       'task' => ['task'],
     ],

@@ -3,19 +3,23 @@
 namespace Drupal\hello_world\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\hello_world\HelloWorldRepository;
+use Drupal\hello_world\Controller\Response;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class HelloWorldController extends ControllerBase {
 
     protected $repository;
 
+    public function __construct(HelloWorldRepository $repository) {
+        $this->repository = $repository;
+    }
+
+
     public static function create(ContainerInterface $container) {
         $controller = new static($container->get('hello_world.repository'));
         $controller->setStringTranslation($container->get('string_translation'));
-        return $controller;
-    }
-
-    public function __construct(HelloWorldRepository $repository) {
-        $this->repository = $repository;
+        return  $controller;
     }
 
     public function build() {
@@ -38,8 +42,6 @@ class HelloWorldController extends ControllerBase {
 
         $rows = [];
         $headers = [
-        $this->t('Id'),
-        $this->t('uid'),
         $this->t('Task'),
         ];
 
@@ -70,8 +72,6 @@ class HelloWorldController extends ControllerBase {
         ];
 
         $headers = [
-        $this->t('Id'),
-        $this->t('Created by'),
         $this->t('Task'),
         ];
 

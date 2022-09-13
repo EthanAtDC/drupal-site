@@ -6,6 +6,7 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerTrait;
+use Drupal\Core\Render\Element\Form;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\dbtng_example\DbtngExampleRepository;
@@ -91,7 +92,6 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
     // Save the submitted entry.
     $entry = [
       'task' => $form_state->getValue('task'),
-      'uid' => $account->id(),
     ];
     $return = $this->repository->insert($entry);
     if ($return) {

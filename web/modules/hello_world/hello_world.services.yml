@@ -1,4 +1,4 @@
 services:
-  dbtng_example.repository:
+  hello_world.repository:
     class: Drupal\hello_world\HelloWorldRepository
     arguments: ['@database', '@string_translation', '@messenger']
