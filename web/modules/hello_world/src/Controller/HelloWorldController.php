@@ -4,12 +4,12 @@ namespace Drupal\hello_world\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\hello_world\HelloWorldRepository;
-use Drupal\hello_world\Controller\Response;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class HelloWorldController extends ControllerBase {
 
     protected $repository;
+
 
     public function __construct(HelloWorldRepository $repository) {
         $this->repository = $repository;
@@ -23,11 +23,14 @@ class HelloWorldController extends ControllerBase {
     }
 
     public function build() {
+
         $build['content'] = [
             '#type' => 'item',
             '#markup' => 'Hello World',
+            '#theme' => 'item_list',
         ];
         return $build;
+
     }
 
     /**
@@ -72,7 +75,7 @@ class HelloWorldController extends ControllerBase {
         ];
 
         $headers = [
-        $this->t('Task'),
+        $this->t('task'),
         ];
 
         $rows = [];
@@ -87,7 +90,6 @@ class HelloWorldController extends ControllerBase {
         '#type' => 'table',
         '#header' => $headers,
         '#rows' => $rows,
-        '#attributes' => ['id' => 'dbtng-example-advanced-list'],
         '#empty' => $this->t('No entries available.'),
         ];
         return $content;

@@ -63,7 +63,7 @@ class HelloWorldRepository {
   }
 
   public function load(array $entry = []) {
-    // Read all the fields from the dbtng_example table.
+    // Read all the fields from the hello_world table.
     $select = $this->connection
       ->select('hello_world')
       // Add all the fields into our select query.
@@ -79,14 +79,13 @@ class HelloWorldRepository {
 
   
   public function advancedLoad() {
-    // Get a select query for our dbtng_example table. We supply an alias of e
+    // Get a select query for our hello_world table. We supply an alias of e
     // (for 'example').
     $select = $this->connection->select('hello_world', 'e');
     // Join the users table, so we can get the entry creator's username.
     // Select these specific fields for the output.
     $select->addField('e', 'task');
 
-    // Filter only persons named "John".
     $select->condition('e.task', 'Running');
     $entries = $select->execute()->fetchAll(\PDO::FETCH_ASSOC);
 

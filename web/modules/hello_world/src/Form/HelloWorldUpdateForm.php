@@ -59,7 +59,7 @@ class HelloWorldUpdateForm extends FormBase {
     // Tell the user if there is nothing to display.
     if (empty($entries)) {
       $form['no_values'] = [
-        '#value' => $this->t('No entries exist in the table dbtng_example table.'),
+        '#value' => $this->t('No entries exist in the table hello_world table.'),
       ];
       return $form;
     }
@@ -67,10 +67,10 @@ class HelloWorldUpdateForm extends FormBase {
     $keyed_entries = [];
     $options = [];
     foreach ($entries as $entry) {
-      $options[$entry->pid] = $this->t('@name', [
+      $options[$entry->task] = $this->t('@name', [
         '@task' => $entry->task,
       ]);
-      $keyed_entries[$entry->pid] = $entry;
+      $keyed_entries[$entry->task] = $entry;
     }
 
     // Grab the pid.

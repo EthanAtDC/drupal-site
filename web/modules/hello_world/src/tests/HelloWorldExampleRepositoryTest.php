@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\hellow_world\Kernel;
+namespace Drupal\Tests\hello_world\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
 
@@ -45,7 +45,7 @@ class HelloWorldRepositoryTest extends KernelTestBase {
   /**
    * Tests several combinations, adding entries, updating and deleting.
    */
-  public function testDbtngExampleStorage() {
+  public function testHelloWorldExampleStorage() {
     /* @var $repository \Drupal\dbtng_example\DbtngExampleRepository */
     $repository = $this->container->get('hello_world.repository');
     // Create a new entry.

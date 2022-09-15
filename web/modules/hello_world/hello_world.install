@@ -1,7 +1,7 @@
 <?php
 
 
-function dbtng_example_install() {
+function hello_world_install() {
   // Insert some example data into our schema.
   $entries = [
     [

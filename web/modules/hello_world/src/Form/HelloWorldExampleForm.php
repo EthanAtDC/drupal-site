@@ -4,12 +4,11 @@ namespace Drupal\hello_world\Form;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormInterface;
+use Drupal\Core\Render\Element\Table;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerTrait;
-use Drupal\Core\Render\Element\Form;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\dbtng_example\DbtngExampleRepository;
 use Drupal\hello_world\HelloWorldRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -25,6 +24,7 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
 
   protected $repository;
   protected $currentUser;
+  protected $database;
 
   public static function create(ContainerInterface $container) {
     $form = new static(
@@ -62,13 +62,33 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
     $form['add']['task'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Task'),
-      '#size' => 15,
+      '#size' => 40,
     ];
-
+    
     $form['add']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Add'),
     ];
+    $content = [];
+    $rows = [];
+    $headers = [
+    $this->t('Tasks'),
+    ];
+
+    $entries = $this->repository->load();
+
+    foreach ($entries as $entry) {
+      // Sanitize each entry.
+    $rows[] = array_map('Drupal\Component\Utility\Html::escape', (array) $entry);
+    }
+    $content['table'] = [
+      '#type' => 'table',
+      '#header' => $headers,
+      '#rows' => $rows,
+      '#empty' => $this->t('No entries available.'),
+    ];
+
+    $form['entry_list'] = $content;
 
     return $form;
   }
