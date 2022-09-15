@@ -24,7 +24,6 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
 
   protected $repository;
   protected $currentUser;
-  protected $database;
 
   public static function create(ContainerInterface $container) {
     $form = new static(
@@ -57,29 +56,9 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    
+    // This is the form where user enters the task
     $form = [];
-
-    $rows = array(
-      // Simple row
-      array(
-        'Cell 1',
-        'Cell 2',
-        'Cell 3',
-      ),
-      // Row with attributes on the row and some of its cells.
-      array(
-        'data' => array(
-          'Cell 1',
-          array(
-            'data' => 'Cell 2',
-            'colspan' => 2,
-          ),
-        ),
-        'class' => array(
-          'funky',
-        ),
-      ),
-    );
 
     $form['add']['task'] = [
       '#type' => 'textfield',
@@ -97,6 +76,7 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
     $this->t('Tasks'),
     ];
 
+    // This is where we grab the data from the db and display it for the user
     $entries = $this->repository->load();
 
     foreach ($entries as $entry) {
@@ -115,14 +95,16 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
     return $form;
   }
 
-  /**
-   * {@inheritdoc}
-   */
+  
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    // Verify that the user is logged-in.
-    if ($this->currentUser->isAnonymous()) {
-      $form_state->setError($form['add'], $this->t('You must be logged in to add values to the database.'));
+    $title = $form_state->getValue('task');
+    
+    if (strlen($title) < 2) {
+
+      $form_state->setErrorByName('task', $this->t('The title must be at least 2 characters long.'));
+
     }
+
   }
 
   /**
