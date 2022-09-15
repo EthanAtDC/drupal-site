@@ -22,7 +22,7 @@ function hook_hello_world_theme($existing, $type, $theme, $path) {
         'items' => NULL,
       ),
     ),
-    'hello_world_text_form'  => array(
+    'hello_world_example_form'  => array(
       'render element' => 'form',
       // In this one the rendering will be done by a template file
       // (theming-example-text-form.tpl.php) instead of being rendered by a
@@ -34,4 +34,5 @@ function hook_hello_world_theme($existing, $type, $theme, $path) {
     ),
   );
 }
+
 

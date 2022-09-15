@@ -59,6 +59,28 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = [];
 
+    $rows = array(
+      // Simple row
+      array(
+        'Cell 1',
+        'Cell 2',
+        'Cell 3',
+      ),
+      // Row with attributes on the row and some of its cells.
+      array(
+        'data' => array(
+          'Cell 1',
+          array(
+            'data' => 'Cell 2',
+            'colspan' => 2,
+          ),
+        ),
+        'class' => array(
+          'funky',
+        ),
+      ),
+    );
+
     $form['add']['task'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Task'),
