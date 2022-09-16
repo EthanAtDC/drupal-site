@@ -1,3 +1,30 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
+
+
+function hook_form_hello_world_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['task'] = [
+    '#type' => 'textfield',
+    '#title' => t("Tasks"),
+    '#required' => TRUE,
+  ];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function hook_hello_world_theme() {
+  return [
+    'hello_world_example_form' => [
+      'template' => 'hello_world_example_form',
+      'variables' => [
+        'completed' => '',
+        'data' => [],
+        'name' => '',
+        'property_info' => [],
+        'images' => [],
+      ],
+    ],
+  ];
+}

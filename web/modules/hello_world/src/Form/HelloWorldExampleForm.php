@@ -64,8 +64,8 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
       '#type' => 'textfield',
       '#title' => $this->t('Task'),
       '#size' => 40,
+      '#required' => TRUE,
     ];
-    
     $form['add']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Add'),
@@ -73,7 +73,7 @@ class HelloWorldExampleForm implements FormInterface, ContainerInjectionInterfac
     $content = [];
     $rows = [];
     $headers = [
-    $this->t('Tasks'),
+      $this->t('PREVIOUS TASKS'),
     ];
 
     // This is where we grab the data from the db and display it for the user
