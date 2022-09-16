@@ -1,0 +1,38 @@
+hello_world.generate_entry_list:
+  path: '/form_task/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::entryList'
+  requirements:
+    _permission: 'access content'
+
+hello_world.list:
+  path: '/form_task/example_list'
+  defaults:
+    _title: 'List'
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::entryList'
+  requirements:
+    _permission: 'access content'
+
+hello_world:
+  path: "/hello-world"
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::build'
+  requirements:
+    _permission: "access content"
+
+hello_world.HelloWorldExampleForm:
+  path: "/form-task"
+  defaults:
+    _form: '\Drupal\hello_world\Form\HelloWorldExampleForm'
+    _title: 'Simple form'
+  requirements:
+    _permission: "access content"
+
+hello_world.advanced:
+  path: '/form_task/advanced'
+  defaults:
+    _title: 'Advanced list'
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::entryAdvancedList'
+  requirements:
+    _permission: 'access content'

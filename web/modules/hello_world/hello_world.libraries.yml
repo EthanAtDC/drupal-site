@@ -1,0 +1,4 @@
+list:
+  css:
+    theme:
+      css/hello_world.css: {preprocess: false}
